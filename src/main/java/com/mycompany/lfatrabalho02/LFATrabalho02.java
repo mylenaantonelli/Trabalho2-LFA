@@ -12,7 +12,7 @@ public class LFATrabalho02 {
     public static void main(String[] args) {
         ExpressaoRegular er = new ExpressaoRegular();
         er.confere(er.AssinaturaDeFuncoes, "void 1funcao01(int a){");
-        
+      
 
 // Casos válidos
         er.confere(er.EstruturaIf, "if(variavel)");       // Aceita
