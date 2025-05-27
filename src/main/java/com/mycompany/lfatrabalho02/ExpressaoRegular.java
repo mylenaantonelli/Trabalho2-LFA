@@ -17,16 +17,28 @@ public class ExpressaoRegular {
     
     public String TiposPrimitivos = "byte|short|int|long|float|double|boolean|char";
     public String TiposObjetos = "String|Integer|Double|Boolean|Character|Object|List|Map|Set";
-    public String Tipos = "\\b(" + TiposPrimitivos + "|" + TiposObjetos + ")\\b";
+    public String TipoVoid = "void";
+    public String TipoArray = "(" + TiposPrimitivos + "|" + TiposObjetos + "|[A-Z][a-zA-Z0-9_]*)\\s*(\\[\\s*\\])*";
+    public String TipoGenerico = "(" + TiposObjetos + "|[A-Z][a-zA-Z0-9_]*)<([^<>]+|<[^<>]+>)+>";
+    public String TipoCustomizado = "[A-Z][a-zA-Z0-9_]*";
+    public String TiposRetornoNaoPrimitivos = TipoVoid + "|" + TipoArray + "|" + TipoGenerico + "|" + TipoCustomizado;
+    public String Tipos = "\\b(" + TiposPrimitivos + "|" + TiposRetornoNaoPrimitivos + ")\\b";
     
-    public String NomeDeFuncaoComeco = "(" + Letra + "|\\_|\\$)";
-    public String NomeDeFuncaoFinal = "(" + Letras + "|" + Digitos + "|\\_|\\$)";
-    public String NomeDeFuncao = NomeDeFuncaoComeco + NomeDeFuncaoFinal + "*";
+    public String PalavrasChaveJava = "^(?!abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|transient|try|void|volatile|while|true|false|null)$";
+    public String PrimeiraLetraNomeDeMetodoOuVariavel = "(" + Letra + "|\\_|\\$)";
+    public String DemaisLetrasNomeDeMetodoOuVariavel = "(" + Letras + "|" + Digitos + "|\\_|\\$)";
+    public String NomeDeMetodoOuVariavel = PrimeiraLetraNomeDeMetodoOuVariavel + DemaisLetrasNomeDeMetodoOuVariavel + "*"; //nao ta englobando palavraschaveJava
     
-    public String ParametroUnico = Tipos  + Brancos + NomeDeFuncao;
+    public String ParametroUnico = Tipos  + Brancos + NomeDeMetodoOuVariavel;
     public String ListaParametros = ParametroUnico + "(" + Brancos + "," + Brancos + ParametroUnico + ")*";
     public String Parametro = "\\(" + Brancos + "(" + ListaParametros + ")?" + Brancos + "\\)";
-
+    
+    public String AssinaturaDeFuncoes = "(" + Brancos + Tipos + Brancos + NomeDeMetodoOuVariavel + Brancos + Parametro + Brancos + "(\\;|\\{)" + Brancos + ")";
+    
+    
+    
+    
+    
     public void confere(String expressao, String sentenca) {
         if (sentenca.matches(expressao)) {
             System.out.println("W: " + sentenca + " - Aceita!");

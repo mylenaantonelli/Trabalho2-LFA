@@ -13,7 +13,7 @@ public class LFATrabalho02 {
     public static void main(String[] args) {
         ExpressaoRegular ER = new ExpressaoRegular();
         
-        ER.confere(ER.Parametro, "(String 2ola, float $num1)");
+        ER.confere(ER.AssinaturaDeFuncoes, "void 1funcao01(int a){");
              
     }
 }
