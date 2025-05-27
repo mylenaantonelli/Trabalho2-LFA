@@ -13,7 +13,7 @@ public class LFATrabalho02 {
     public static void main(String[] args) {
         ExpressaoRegular ER = new ExpressaoRegular();
         
-        ER.confere(ER.AssinaturaDeFuncoes, "void 1funcao01(int a){");
+        ER.confere(ER.ExpressaoMatematica, "-4 + beta * media[1].x * soma(a,b)/4 * vetor[5].idade");
              
     }
 }

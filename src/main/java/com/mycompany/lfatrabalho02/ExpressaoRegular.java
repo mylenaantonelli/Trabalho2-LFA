@@ -35,8 +35,27 @@ public class ExpressaoRegular {
     
     public String AssinaturaDeFuncoes = "(" + Brancos + Tipos + Brancos + NomeDeMetodoOuVariavel + Brancos + Parametro + Brancos + "(\\;|\\{)" + Brancos + ")";
     
+    public String NumerosPositivosEImparesBinario = "0(0|1)*1";
+    public String NumerosNegativosEParesBinario = "1(0|1)*0";
     
     
+    public String Exponencial = "E(\\+|\\-)" + Digitos;
+    public String Fracionaria = "(\\." + Digitos + "(" + Exponencial + ")?)";
+    public String Real = "\\-?" + Digitos + "(" + Fracionaria + ")?" + "(" + Exponencial + ")?"; //aceita qualquer numero real
+    
+    
+    public String Numero = Real;
+    public String AcessoArray = NomeDeMetodoOuVariavel + "(" + Brancos + "\\[" + Brancos + Digitos + Brancos + "\\])*";
+    public String AcessoEncadeado = AcessoArray + "(" + Brancos + "\\." + Brancos + AcessoArray + ")*";
+    public String ParametrosFuncaoSimples = "\\(" + Brancos + "(" + NomeDeMetodoOuVariavel + "(" + Brancos + "," + Brancos + NomeDeMetodoOuVariavel + ")*)?" + Brancos + "\\)";
+    public String FuncaoComParametros = AcessoEncadeado + Brancos + ParametrosFuncaoSimples;
+    public String VariavelOuAcesso = AcessoEncadeado;
+    public String TermoSemParenteses = "(" + Numero + "|" + FuncaoComParametros + "|" + VariavelOuAcesso + ")";
+    public String ExpressaoParentesesSimples = "\\(" + Brancos + TermoSemParenteses + "(" + Brancos + "[+\\-*/]" + Brancos + TermoSemParenteses + ")*" + Brancos + "\\)";
+    public String Termo = "(" + TermoSemParenteses + "|" + ExpressaoParentesesSimples + ")";
+    public String Operador = "[+\\-*/]";
+    public String ExpressaoMatematica = Termo + "(" + Brancos + Operador + Brancos + Termo + ")*";
+
     
     
     public void confere(String expressao, String sentenca) {
