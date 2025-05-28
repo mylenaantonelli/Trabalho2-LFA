@@ -29,17 +29,22 @@ public class ExpressaoRegular {
     public String DemaisLetrasNomeDeMetodoOuVariavel = "(" + Letras + "|" + Digitos + "|\\_|\\$)";
     public String NomeDeMetodoOuVariavel = PrimeiraLetraNomeDeMetodoOuVariavel + DemaisLetrasNomeDeMetodoOuVariavel + "*"; //nao ta englobando palavraschaveJava
     
+    
+    //Parametro
     public String ParametroUnico = Tipos  + Brancos + NomeDeMetodoOuVariavel;
     public String ListaParametros = ParametroUnico + "(" + Brancos + "," + Brancos + ParametroUnico + ")*";
     public String Parametro = "\\(" + Brancos + "(" + ListaParametros + ")?" + Brancos + "\\)";
     
+    
+    // Assinatura de função
     public String AssinaturaDeFuncoes = "(" + Brancos + Tipos + Brancos + NomeDeMetodoOuVariavel + Brancos + Parametro + Brancos + "(\\;|\\{)" + Brancos + ")";
-    // if
+    
+    
+    //Condicional if
     public String OperadoresRelacionais = "(==|!=|>=|<=|>|<)";
     public String OperadoresLogicos = "(\\&\\&|\\|\\|)";
     public String Booleanos = "(true|false)";
     public String Identificador = PrimeiraLetraNomeDeMetodoOuVariavel + DemaisLetrasNomeDeMetodoOuVariavel + "*";
-
     public String ExpressaoSimples = "(" + Booleanos + "|" + Identificador + "|" + Identificador + Brancos + OperadoresRelacionais + Brancos + Identificador + ")";
     public String ExpressaoNegada = "(!" + Brancos + "(" + ExpressaoSimples + "|\\(" + Brancos + ExpressaoSimples + Brancos + "\\))" + ")";
     public String ExpressaoComposta = "(" + ExpressaoSimples + "|" + ExpressaoNegada + ")" + "(" + Brancos + OperadoresLogicos + Brancos + "(" + ExpressaoSimples + "|" + ExpressaoNegada + "))*";
@@ -47,15 +52,13 @@ public class ExpressaoRegular {
     public String EstruturaIf = "if\\(" + CondicaoIf + "\\)"; // if
 
     
-    public String NumerosPositivosEImparesBinario = "0(0|1)*1";
-    public String NumerosNegativosEParesBinario = "1(0|1)*0";
-
     
+
+
+    //Expressão Matematica
     public String Exponencial = "E(\\+|\\-)" + Digitos;
     public String Fracionaria = "(\\." + Digitos + "(" + Exponencial + ")?)";
     public String Real = "\\-?" + Digitos + "(" + Fracionaria + ")?" + "(" + Exponencial + ")?"; //aceita qualquer numero real
-    
-    
     public String Numero = Real;
     public String AcessoArray = NomeDeMetodoOuVariavel + "(" + Brancos + "\\[" + Brancos + Digitos + Brancos + "\\])*";
     public String AcessoEncadeado = AcessoArray + "(" + Brancos + "\\." + Brancos + AcessoArray + ")*";
@@ -67,6 +70,13 @@ public class ExpressaoRegular {
     public String Termo = "(" + TermoSemParenteses + "|" + ExpressaoParentesesSimples + ")";
     public String Operador = "[+\\-*/]";
     public String ExpressaoMatematica = Termo + "(" + Brancos + Operador + Brancos + Termo + ")*";
+    
+    
+    // Execicios
+    //Numeros Impares e Positivos 
+    public String NumerosPositivosEImparesBinario = "0(0|1)*1";
+    //Numeros Negativos e pares
+    public String NumerosNegativosEParesBinario = "1(0|1)*0";
 
     public void confere(String expressao, String sentenca) {
         if (sentenca.matches(expressao)) {
