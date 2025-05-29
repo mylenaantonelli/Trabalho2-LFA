@@ -21,6 +21,8 @@ public class LFATrabalho02 {
         //Assinatura de Função
         er.confere(er.AssinaturaDeFuncoes, "float soma(float a, float b){");
         er.confere(er.AssinaturaDeFuncoes, "void 1funcao01(int a){");
+        er.confere(er.AssinaturaDeFuncoes, "void funcao01(){");
+        er.confere(er.AssinaturaDeFuncoes, "void funcao01");
         
         
         System.out.println("Condicional if");
@@ -34,7 +36,6 @@ public class LFATrabalho02 {
         er.confere(er.EstruturaIf, "if(a > b && c < d)"); // Aceita
         er.confere(er.EstruturaIf, "if(!(a > b))");       // Aceita
         
-       
         //Casos inválidos
         er.confere(er.EstruturaIf, "if()");               // Rejeita
         er.confere(er.EstruturaIf, "if(a >)");            // Rejeita
@@ -48,6 +49,7 @@ public class LFATrabalho02 {
          System.out.println("Expressão Matematica");
         //Expressão Matematica
         er.confere(er.ExpressaoMatematica, "-4 + beta * media[1].x * soma(a,b)/4 * vetor[5].idade");
+        er.confere(er.ExpressaoMatematica,"t++");
         er.confere(er.ExpressaoMatematica, "3 + media/3");
         er.confere(er.ExpressaoMatematica, "soma de 3 e 4");
         er.confere(er.ExpressaoMatematica, "3 + 5$");
